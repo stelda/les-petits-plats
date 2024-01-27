@@ -56,7 +56,9 @@ header {
 
 .search-input {
     /* typography */
-    @apply text-sm md:text-base lg:text-base outline-none;
+    @apply text-sm md:text-base lg:text-base;
+    /* on focus remove the text of the placeholder */
+    @apply focus:outline-none;
     /* dimensions */
     width: 954px;
     height: 72px;
@@ -64,6 +66,22 @@ header {
     margin-left: 50px;
     /* borders */
     border-radius: 10px;
+}
+
+.search-input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.search-input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.search-input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+.search-input:focus::placeholder {
+    color: transparent;
 }
 
 .search-button {
@@ -86,8 +104,20 @@ header {
     @apply hover:bg-custom-yellow;
 }
 
+.xmark {
+    /* layout */
+    position: relative;
+    left: -140px; /* (50px + (60px - 50px) x 2) x 2 */
+    /* dimensions */
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    min-height: 13px;
+    /* colors */
+    @apply text-custom-gray;
+}
+
 main {
-    border: 5px solid green;
     max-width: 1440px;
 }
 
@@ -111,6 +141,10 @@ main {
         min-width: 40px;
         min-height: 40px;
     }
+
+    .xmark {
+    left: -115px; /* (40px + (45px - 40px) x 2) x 2 */
+    }
 }
 
 @media (max-width: 768px) {
@@ -132,35 +166,42 @@ main {
         min-width: 30px;
         min-height: 30px;
     }
+
+    .xmark {
+        left: -95px; /* (30px + (35px - 30px) x 2) x 2 */
+    }
 }
 
-/* borders for debugging */
+/*!* borders for debugging *!*/
 
-body {
-     border: 5px solid red;
-}
+/*body {*/
+/*     border: 5px solid red;*/
+/*}*/
 
-header {
-     border: 5px solid blue;
-}
+/*header {*/
+/*     border: 5px solid blue;*/
+/*}*/
 
-.title-container {
-     border: 5px solid pink;
-}
+/*.title-container {*/
+/*     border: 5px solid pink;*/
+/*}*/
 
-.logo-content {
-     border: 5px solid green;
-}
+/*.logo-content {*/
+/*     border: 5px solid green;*/
+/*}*/
 
-.search-container {
-     border: 5px solid yellow;
-}
+/*.search-container {*/
+/*     border: 5px solid yellow;*/
+/*}*/
 
-.search-input {
-     border: 5px solid purple;
-}
+/*.search-input {*/
+/*     border: 5px solid purple;*/
+/*}*/
 
-.search-button {
-     border: 5px solid orange;
-}
+/*.search-button {*/
+/*     border: 5px solid orange;*/
+/*}*/
 
+/*main {*/
+/*    border: 5px solid green;*/
+/*}*/

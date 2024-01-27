@@ -621,8 +621,6 @@ header {
 .search-input {
   /* typography */
   font-size: .875rem;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
 }
 
 @media (min-width: 768px) {
@@ -638,6 +636,15 @@ header {
 }
 
 .search-input {
+  /* on focus remove the text of the placeholder */
+}
+
+.search-input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.search-input {
   /* dimensions */
   width: 954px;
   height: 72px;
@@ -645,6 +652,14 @@ header {
   margin-left: 50px;
   /* borders */
   border-radius: 10px;
+}
+
+.search-input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+.search-input:focus::placeholder {
+  color: transparent;
 }
 
 .search-button {
@@ -668,8 +683,22 @@ header {
   background-color: rgb(255 209 91 / var(--tw-bg-opacity));
 }
 
+.xmark {
+  /* layout */
+  position: relative;
+  left: -140px;
+  /* (50px + (60px - 50px) x 2) x 2 */
+  /* dimensions */
+  width: 13px;
+  height: 13px;
+  min-width: 13px;
+  min-height: 13px;
+  /* colors */
+  --tw-text-opacity: 1;
+  color: rgb(122 122 122 / var(--tw-text-opacity));
+}
+
 main {
-  border: 5px solid green;
   max-width: 1440px;
 }
 
@@ -694,6 +723,11 @@ main {
     min-width: 40px;
     min-height: 40px;
   }
+
+  .xmark {
+    left: -115px;
+    /* (40px + (45px - 40px) x 2) x 2 */
+  }
 }
 
 @media (max-width: 768px) {
@@ -715,35 +749,59 @@ main {
     min-width: 30px;
     min-height: 30px;
   }
+
+  .xmark {
+    left: -95px;
+    /* (30px + (35px - 30px) x 2) x 2 */
+  }
 }
 
-/* borders for debugging */
+/*!* borders for debugging *!*/
 
-body {
-  border: 5px solid red;
-}
+/*body {*/
 
-header {
-  border: 5px solid blue;
-}
+/*     border: 5px solid red;*/
 
-.title-container {
-  border: 5px solid pink;
-}
+/*}*/
 
-.logo-content {
-  border: 5px solid green;
-}
+/*header {*/
 
-.search-container {
-  border: 5px solid yellow;
-}
+/*     border: 5px solid blue;*/
 
-.search-input {
-  border: 5px solid purple;
-}
+/*}*/
 
-.search-button {
-  border: 5px solid orange;
-}
+/*.title-container {*/
 
+/*     border: 5px solid pink;*/
+
+/*}*/
+
+/*.logo-content {*/
+
+/*     border: 5px solid green;*/
+
+/*}*/
+
+/*.search-container {*/
+
+/*     border: 5px solid yellow;*/
+
+/*}*/
+
+/*.search-input {*/
+
+/*     border: 5px solid purple;*/
+
+/*}*/
+
+/*.search-button {*/
+
+/*     border: 5px solid orange;*/
+
+/*}*/
+
+/*main {*/
+
+/*    border: 5px solid green;*/
+
+/*}*/
