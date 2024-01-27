@@ -1,3 +1,166 @@
+/* import tailwind styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* define custom styles */
+
+body {
+    /* typography */
+    @apply font-manrope;
+    /* layout */
+    @apply flex flex-col items-center justify-center;
+    /* background */
+    @apply bg-background-gray;
+}
+
+header {
+    /* layout */
+    @apply flex flex-col;
+    /* dimensions */
+    min-width: 320px;
+    width: 100%;
+    max-width: 1440px;
+    /* background */
+    background-size: cover;
+    background: url("../assets/background/header.png") no-repeat center;
+}
+
+.logo-container {
+    /* layout */
+    @apply flex;
+}
+
+.logo-container img {
+    /* dimensions */
+    width: 210px;
+    padding: 20px;
+}
+
+.title-container {
+    /* dimensions */
+    margin: 5% 20% 15px 20%;
+}
+
+.title-container h1 {
+    /* typography */
+    @apply font-anton text-custom-yellow text-center text-xl md:text-3xl lg:text-4xl;
+}
+
+.search-container {
+    /* layout */
+    @apply flex justify-center items-center;
+    /* dimensions */
+    margin: 15px 10% 10% 10%;
+}
+
+.search-input {
+    /* typography */
+    @apply text-sm md:text-base lg:text-base outline-none;
+    /* dimensions */
+    width: 954px;
+    height: 72px;
+    padding: 35px;
+    margin-left: 50px;
+    /* borders */
+    border-radius: 10px;
+}
+
+.search-button {
+    /* layout */
+    position: relative;
+    left: -60px;
+    /* colors */
+    color: white;
+    background-color: black;
+    /* dimensions */
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    /* borders */
+    border-radius: 10px;
+}
+
+.search-button:hover {
+    @apply hover:bg-custom-yellow;
+}
+
+main {
+    border: 5px solid green;
+    max-width: 1440px;
+}
+
+/* media queries */
+@media (max-width: 1024px) {
+    .search-input {
+        /* dimensions */
+        width: 800px;
+        height: 50px;
+        padding: 25px;
+        margin-left: 40px;
+    }
+
+    .search-button {
+        /* layout */
+        position: relative;
+        left: -45px;
+        /* dimensions */
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-input {
+        /* dimensions */
+        width: 600px;
+        height: 40px;
+        padding: 15px;
+        margin-left: 30px;
+    }
+
+    .search-button {
+        /* layout */
+        position: relative;
+        left: -35px;
+        /* dimensions */
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+}
+
+/* borders for debugging */
+
+body {
+     border: 5px solid red;
+}
+
+header {
+     border: 5px solid blue;
+}
+
+.title-container {
+     border: 5px solid pink;
+}
+
+.logo-content {
+     border: 5px solid green;
+}
+
+.search-container {
+     border: 5px solid yellow;
+}
+
+.search-input {
+     border: 5px solid purple;
+}
+
+.search-button {
+     border: 5px solid orange;
+}
+
