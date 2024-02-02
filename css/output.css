@@ -820,11 +820,21 @@ article img {
   margin: 15px 0;
 }
 
+.recipe-card-content-instructions p {
+  /* layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* dimensions */
+  height: 100px;
+  margin-bottom: 20px;
+}
+
 .recipe-card-content-ingredients {
   margin-bottom: 20px;
 }
 
 .recipe-card-content-ingredients .ingredients-list {
+  border: 5px solid pink;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   -moz-column-gap: 4rem;

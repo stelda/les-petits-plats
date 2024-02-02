@@ -10,4 +10,8 @@ document.addEventListener('DOMContentLoaded',  () => {
 
     const container = document.querySelector('.recipes-container');
     recipeElements.forEach(element => container.appendChild(element));
+
+    const numberContainer = document.querySelector('.number-recipes');
+    numberContainer.textContent = recipeElements.length;
+
 });
