@@ -834,7 +834,6 @@ article img {
 }
 
 .recipe-card-content-ingredients .ingredients-list {
-  border: 5px solid pink;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   -moz-column-gap: 4rem;

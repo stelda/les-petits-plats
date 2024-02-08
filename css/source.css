@@ -227,7 +227,6 @@ article img {
 }
 
 .recipe-card-content-ingredients .ingredients-list {
-    border: 5px solid pink;
     @apply grid grid-cols-2 gap-x-16 gap-y-4;
     list-style-type: none;
     margin: 0;
