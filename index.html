@@ -34,20 +34,88 @@
     <main>
         <div class="filters-number">
             <div class="filters-container">
-                <div class="filter">
-                    <span class="filter-title">Ingrédients</span>
-                    <i class="fas fa-chevron-down"></i>
+                <div class="ingredient-filter">
+                    <div class="filter">
+                        <div class="filter-title-container">
+                            <span class="filter-title">Ingrédients</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="advanced-search-container">
+                            <input type="text" id="ingredients-search" />
+                            <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="tags-container">
+                            <menu>
+                                <li class="tag">Chocolat</li>
+                                <li class="tag">Vanille</li>
+                            </menu>
+                        </div>
+                        <div class="filters-list ingredients-list">
+                            <menu>
+                                <li>Jus de citron</li>
+                                <li>Vanille</li>
+                                <li>Fraise</li>
+                                <li>Banane</li>
+                            </menu>
+                        </div>
+                    </div>
                 </div>
-                <div class="filter">
-                    <span class="filter-title">Appareils</span>
-                    <i class="fas fa-chevron-down"></i>
+
+                <div class="apparels-filter">
+                    <div class="filter">
+                        <div class="filter-title-container">
+                            <span class="filter-title">Appareils</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="advanced-search-container">
+                            <input type="text" id="apparels-search" />
+                            <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="filters-list apparels-list">
+                            <menu>
+                                <li>Casserole</li>
+                                <li>Four</li>
+                            </menu>
+                        </div>
+                    </div>
                 </div>
-                <div class="filter">
-                    <span class="filter-title">Ustensiles</span>
-                    <i class="fas fa-chevron-down"></i>
+
+                <div>
+                    <div class="filter">
+                        <div class="filter-title-container">
+                            <span class="filter-title">Ustensiles</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="advanced-search-container">
+                            <input type="text" id="ustensils-search" />
+                            <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="filters-list ustensils-list"></div>
+                    </div>
                 </div>
             </div>
             <div class="number-container">50 recettes</div>
+        </div>
+        <div class="selected-filters">
+
+                <div class="selected-filters-list">
+                    <div class="selected-filter">
+                        <span class="selected-filter-name">Poulet</span>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="selected-filter">
+                        <span class="selected-filter-name">Poivrons</span>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="selected-filter">
+                        <span class="selected-filter-name">Tamis</span>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+            </div>
         </div>
         <div class="recipes-container"></div>
     </main>
