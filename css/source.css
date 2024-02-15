@@ -201,10 +201,10 @@ main {
     @apply text-sm;
     font-weight: 400;
     list-style: none;
-    padding: 17px 16px;
+    padding: 5px 16px;
 }
 
-.tags-container {
+.tags-container menu {
     @apply flex flex-col;
     gap: 2px;
 }
@@ -214,7 +214,7 @@ main {
     font-weight: 400;
     list-style: none;
     @apply bg-custom-yellow;
-    padding: 17px 16px;
+    padding: 5px 16px;
 }
 
 /*================================ TAGS ================================*/
@@ -370,10 +370,12 @@ article img {
 
     .filters-list li {
         @apply text-sm;
+        padding: 0 10px;
     }
 
     .tags-container li {
         @apply text-sm;
+        padding: 0 10px;
     }
 
     .recipes-container {

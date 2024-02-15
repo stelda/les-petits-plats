@@ -802,10 +802,10 @@ main {
   font-size: .875rem;
   font-weight: 400;
   list-style: none;
-  padding: 17px 16px;
+  padding: 5px 16px;
 }
 
-.tags-container {
+.tags-container menu {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -817,7 +817,7 @@ main {
   list-style: none;
   --tw-bg-opacity: 1;
   background-color: rgb(255 209 91 / var(--tw-bg-opacity));
-  padding: 17px 16px;
+  padding: 5px 16px;
 }
 
 /*================================ TAGS ================================*/
@@ -999,10 +999,12 @@ article img {
 
   .filters-list li {
     font-size: .875rem;
+    padding: 0 10px;
   }
 
   .tags-container li {
     font-size: .875rem;
+    padding: 0 10px;
   }
 
   .recipes-container {
@@ -1091,6 +1093,7 @@ article img {
   }
 
   .selected-filters .selected-filter {
+    font-size: .75rem;
     padding: 10px;
     margin-right: 5px;
     gap: 15px;
