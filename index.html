@@ -27,7 +27,9 @@
         <div class="search-container">
             <input type="text" placeholder="Rechercher une recette, un ingrédient, ..." class="search-input"/>
             <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <i class="xmark fa-solid fa-xmark"></i>
+            <div class="clear-icon-container">
+                <i class="fa-solid fa-xmark clear-icon"></i>
+            </div>
         </div>
     </header>
 
@@ -43,7 +45,9 @@
                         <div class="advanced-search-container">
                             <input type="text" id="ingredients-search" />
                             <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <i class="fa-solid fa-xmark"></i>
+                            <div class="advanced-clear-icon-container">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
                         </div>
                         <div class="tags-container">
                             <menu>
@@ -62,18 +66,20 @@
                     </div>
                 </div>
 
-                <div class="apparels-filter">
+                <div class="appliance-filter">
                     <div class="filter">
                         <div class="filter-title-container">
                             <span class="filter-title">Appareils</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="advanced-search-container">
-                            <input type="text" id="apparels-search" />
+                            <input type="text" id="appliance-search" />
                             <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <i class="fa-solid fa-xmark"></i>
+                            <div class="advanced-clear-icon-container">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
                         </div>
-                        <div class="filters-list apparels-list">
+                        <div class="filters-list appliance-list">
                             <menu>
                                 <li>Casserole</li>
                                 <li>Four</li>
@@ -91,7 +97,9 @@
                         <div class="advanced-search-container">
                             <input type="text" id="ustensils-search" />
                             <button class="advanced-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <i class="fa-solid fa-xmark"></i>
+                            <div class="advanced-clear-icon-container">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
                         </div>
                         <div class="filters-list ustensils-list"></div>
                     </div>
@@ -121,5 +129,6 @@
     </main>
 </body>
 <script type="module" src="scripts/page/index.js"></script>
+<script type="module" src="scripts/utils/clearSearch.js"></script>
 
 </html>

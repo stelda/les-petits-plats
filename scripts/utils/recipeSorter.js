@@ -1,8 +1,6 @@
 import recipes from "../../data/recipes.js";
 
 export function searchRecipes(input) {
-    console.log(input);
-    console.log(recipes);
     return recipes.filter((recipe) => {
         const searchTerm = input.toLowerCase();
 
@@ -16,6 +14,6 @@ export function searchRecipes(input) {
 }
 
 // export function sortRecipesByIngredients
-// export function sortRecipesByApparels
+// export function sortRecipesByAppliance
 // export function sortRecipesByUstensils
 
