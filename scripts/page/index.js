@@ -30,8 +30,13 @@ searchButton.addEventListener('click', () => {
     if (searchInput.length >= 3) {
         const results = searchRecipes(searchInput);
         displayRecipes(results);
+        if (results.length === 0) {
+            const container = document.querySelector('.recipes-container');
+            container.innerHTML = '';
+            container.textContent = `Aucune recette ne correspond à « ${searchInput} » vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+        }
     } else {
-        alert('Veuillez entrer au moins 3 caractères pour la recherche.');
+        displayRecipes(recipes);
     }
 });
 
