@@ -222,6 +222,7 @@ main {
     font-weight: 400;
     list-style: none;
     padding: 5px 16px;
+    @apply hover:bg-custom-yellow;
 }
 
 .tags-container menu {

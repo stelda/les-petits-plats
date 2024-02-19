@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Main search field
     const searchField = document.querySelector('.search-input');
     const clearIcon = document.querySelector('.search-container .fa-xmark');
 
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchField.focus();
     });
 
-    // Gérer tous les champs de recherche avancée
+    // Advanced search fields
     document.querySelectorAll('.advanced-search-container input').forEach((advancedSearchField, index) => {
         const advancedClearIcon = document.querySelectorAll('.advanced-search-container .fa-xmark')[index];
 

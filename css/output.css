@@ -843,6 +843,11 @@ main {
   padding: 5px 16px;
 }
 
+.filters-list li:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 209 91 / var(--tw-bg-opacity));
+}
+
 .tags-container menu {
   display: flex;
   flex-direction: column;
