@@ -13,30 +13,30 @@ export function searchRecipes(input) {
     });
 }
 
-// return the recipes that match the selected ingredients in the advanced search
-export function sortRecipesByIngredients(recipesToFilter, selectedIngredients) {
+export function filterRecipes(recipesToFilter, selectedIngredients = [], selectedAppliances = [], selectedUstensils = []) {
     return recipesToFilter.filter(recipe => {
-        return selectedIngredients.every(selectedIngredient => {
-            return recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase()));
-        });
+        // sort by ingredients
+        const matchesIngredients = selectedIngredients.length === 0 || selectedIngredients.every(selectedIngredient =>
+            recipe.ingredients.some(ingredient =>
+                ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase())
+            )
+        );
+
+        // sort by appliances
+        const matchesAppliances = selectedAppliances.length === 0 || selectedAppliances.every(selectedAppliance =>
+            recipe.appliance.toLowerCase().includes(selectedAppliance.toLowerCase())
+        );
+
+        // sort by ustensils
+        const matchesUstensils = selectedUstensils.length === 0 || selectedUstensils.every(selectedUstensil =>
+            recipe.ustensils.some(ustensil =>
+                ustensil.toLowerCase().includes(selectedUstensil.toLowerCase())
+            )
+        );
+
+        return matchesIngredients && matchesAppliances && matchesUstensils;
     });
 }
 
-// return the recipes that match the selected appliances in the advanced search
-export function sortRecipesByAppliances(recipesToFilter, selectedAppliances) {
-    return recipesToFilter.filter(recipe => {
-        return selectedAppliances.every(selectedAppliance => {
-            return recipe.appliance.toLowerCase().includes(selectedAppliance.toLowerCase());
-        });
-    });
-}
 
-// return the recipes that match the selected ustensils in the advanced search
-export function sortRecipesByUstensils(recipesToFilter, selectedUstensils) {
-    return recipesToFilter.filter(recipe => {
-        return selectedUstensils.every(selectedUstensil => {
-            return recipe.ustensils.some(ustensil => ustensil.toLowerCase().includes(selectedUstensil.toLowerCase()));
-        });
-    });
-}
 

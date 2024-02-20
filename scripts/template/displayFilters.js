@@ -10,6 +10,7 @@ export function displayIngredients(recipesToDisplay) {
         li.textContent = ingredient.charAt(0).toUpperCase() + ingredient.slice(1);
         container.appendChild(li);
     });
+
     const ingredientKeywords = document.querySelectorAll('.ingredient');
     ingredientKeywords.forEach(ingredient => {
         ingredient.addEventListener('click', () => {
@@ -17,6 +18,8 @@ export function displayIngredients(recipesToDisplay) {
             advancedSearchInput.value = ingredient.textContent;
         });
     });
+
+
 }
 
 

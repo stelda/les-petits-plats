@@ -1,32 +1,54 @@
-export function updateIngredientList(param) {
-    const ingredients = document.querySelectorAll('.ingredients-list menu li');
-    ingredients.forEach(ingredient => {
-        if (ingredient.textContent.toLowerCase().includes(param.toLowerCase())) {
-            ingredient.style.display = 'block';
+export function updateIngredientsDisplay() {
+    const ingredientsList = document.querySelectorAll('.ingredients-list menu li');
+    const selectedFilters = document.querySelectorAll('.selected-filter-name');
+
+    // Créer un ensemble des filtres sélectionnés pour une recherche rapide
+    const selectedFiltersSet = new Set(Array.from(selectedFilters).map(filter => filter.textContent.toLowerCase()));
+
+    // Parcourez tous les ingrédients et masquez ceux qui ont été sélectionnés
+    ingredientsList.forEach(ingredientItem => {
+        const ingredientText = ingredientItem.textContent.toLowerCase();
+        if (selectedFiltersSet.has(ingredientText)) {
+            ingredientItem.style.display = 'none'; // Masquez l'élément
         } else {
-            ingredient.style.display = 'none';
+            ingredientItem.style.display = ''; // Affichez l'élément s'il n'est pas sélectionné
         }
     });
 }
 
-export function updateApplianceList(param) {
-    const appliances = document.querySelectorAll('.appliances-list menu li');
-    appliances.forEach(appliance => {
-        if (appliance.textContent.toLowerCase().includes(param.toLowerCase())) {
-            appliance.style.display = 'block';
+export function updateAppliancesDisplay() {
+    const appliancesList = document.querySelectorAll('.appliances-list menu li');
+    const selectedFilters = document.querySelectorAll('.selected-filter-name');
+
+    // Créer un ensemble des filtres sélectionnés pour une recherche rapide
+    const selectedFiltersSet = new Set(Array.from(selectedFilters).map(filter => filter.textContent.toLowerCase()));
+
+    // Parcourez tous les appareils et masquez ceux qui ont été sélectionnés
+    appliancesList.forEach(applianceItem => {
+        const applianceText = applianceItem.textContent.toLowerCase();
+        if (selectedFiltersSet.has(applianceText)) {
+            applianceItem.style.display = 'none'; // Masquez l'élément
         } else {
-            appliance.style.display = 'none';
+            applianceItem.style.display = ''; // Affichez l'élément s'il n'est pas sélectionné
         }
     });
 }
 
-export function updateUstensilList(param) {
-    const ustensils = document.querySelectorAll('.ustensils-list menu li');
-    ustensils.forEach(ustensil => {
-        if (ustensil.textContent.toLowerCase().includes(param.toLowerCase())) {
-            ustensil.style.display = 'block';
+export function updateUstensilsDisplay() {
+    const ustensilsList = document.querySelectorAll('.ustensils-list menu li');
+    const selectedFilters = document.querySelectorAll('.selected-filter-name');
+
+    // Créer un ensemble des filtres sélectionnés pour une recherche rapide
+    const selectedFiltersSet = new Set(Array.from(selectedFilters).map(filter => filter.textContent.toLowerCase()));
+
+    // Parcourez tous les ustensiles et masquez ceux qui ont été sélectionnés
+    ustensilsList.forEach(ustensilItem => {
+        const ustensilText = ustensilItem.textContent.toLowerCase();
+        if (selectedFiltersSet.has(ustensilText)) {
+            ustensilItem.style.display = 'none'; // Masquez l'élément
         } else {
-            ustensil.style.display = 'none';
+            ustensilItem.style.display = ''; // Affichez l'élément s'il n'est pas sélectionné
         }
     });
 }
+
