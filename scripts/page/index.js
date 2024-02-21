@@ -83,27 +83,50 @@ ustensilSearch.addEventListener('keyup', () => {
 
 /*==================================== Click on Advanced Search Button ====================================*/
 // on click on advanced search button, create a list of selected ingredients
+
 const ingredientButton = document.querySelector('.ingredient-filter .advanced-search-button');
 ingredientButton.addEventListener('click', () => {
     const selectedIngredient = ingredientSearch.value;
-    createTags(selectedIngredient, 'ingredient');
-    updateIngredientsDisplay(selectedIngredient);
+
+    const ingredientsList = document.querySelectorAll('.ingredient');
+    const availableIngredients = Array.from(ingredientsList).map(li => li.textContent.toLowerCase());
+
+    // check if the selected ingredient is available
+    if (availableIngredients.includes(selectedIngredient.toLowerCase())) {
+        createTags(selectedIngredient, 'ingredient');
+        updateIngredientsDisplay(selectedIngredient);
+    }
+
 });
 
 // on click on advanced search button, create a list of selected appliance
 const applianceButton = document.querySelector('.appliance-filter .advanced-search-button');
 applianceButton.addEventListener('click', () => {
     const selectedAppliance = applianceSearch.value;
-    createTags(selectedAppliance, 'appliance');
-    updateAppliancesDisplay(selectedAppliance);
+
+    const appliancesList = document.querySelectorAll('.appliance');
+    const availableAppliances = Array.from(appliancesList).map(li => li.textContent.toLowerCase());
+
+    // check if the selected appliance is available
+    if (availableAppliances.includes(selectedAppliance.toLowerCase())) {
+        createTags(selectedAppliance, 'appliance');
+        updateAppliancesDisplay(selectedAppliance);
+    }
 });
 
 // on click on advanced search button, create a list of selected ustensils
 const ustensilButton = document.querySelector('.ustensil-filter .advanced-search-button');
 ustensilButton.addEventListener('click', () => {
     const selectedUstensil = ustensilSearch.value;
-    createTags(selectedUstensil, 'ustensil');
-    updateUstensilsDisplay(selectedUstensil);
+
+    const ustensilsList = document.querySelectorAll('.ustensil');
+    const availableUstensils = Array.from(ustensilsList).map(li => li.textContent.toLowerCase());
+
+    // check if the selected ustensil is available
+    if (availableUstensils.includes(selectedUstensil.toLowerCase())) {
+        createTags(selectedUstensil, 'ustensil');
+        updateUstensilsDisplay(selectedUstensil);
+    }
 });
 
 

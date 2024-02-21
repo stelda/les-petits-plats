@@ -1,3 +1,5 @@
+import {updateAppliancesDisplay, updateIngredientsDisplay, updateUstensilsDisplay} from "./updateFilters.js";
+
 export function createTags (filter, type) {
 
     const selectedTags = document.querySelectorAll('.selected-filter-name');
@@ -45,5 +47,8 @@ export function createTags (filter, type) {
     selectedFilterClose.addEventListener('click', () => {
         selectedFilter.remove();
         tag.remove();
+        updateIngredientsDisplay();
+        updateAppliancesDisplay();
+        updateUstensilsDisplay();
     });
 }
