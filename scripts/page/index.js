@@ -6,7 +6,7 @@ import {displayIngredients, displayAppliances, displayUstensils} from "../templa
 import {updateIngredientList, updateApplianceList, updateUstensilList} from "../template/keyupFilters.js";
 import {createTags} from "../template/createTags.js";
 import {updateIngredientsDisplay, updateAppliancesDisplay, updateUstensilsDisplay} from "../template/updateFilters.js";
-
+import {resetFilters} from "../utils/resetFilters.js";
 
 /*====================================Display recipes ====================================*/
 function displayRecipes(recipesToDisplay) {
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* on click on the search button, display the recipes that match the search input */
 const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', () => {
+    resetFilters();
     const searchInput = document.querySelector('.search-input').value;
     if (searchInput.length >= 3) {
         const results = searchRecipes(searchInput);
