@@ -12,5 +12,7 @@ export function displayRecipes(recipesToDisplay) {
     recipeElements.forEach(element => container.appendChild(element));
 
     const numberContainer = document.querySelector('.number-container');
-    numberContainer.textContent = `${recipesToDisplay.length} recettes`;
+
+    numberContainer.textContent = recipesToDisplay.length === 1 ? `${recipesToDisplay.length} recette` : `${recipesToDisplay.length} recettes`;
+
 }

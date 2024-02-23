@@ -3,3 +3,4 @@ export const filtersState = {
     selectedAppliances: [],
     selectedUstensils: []
 };
+

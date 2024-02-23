@@ -1,5 +1,8 @@
 import {updateAppliancesDisplay, updateIngredientsDisplay, updateUstensilsDisplay} from "./updateFilters.js";
 import {filtersState} from "../utils/filtersState.js";
+import {displayRecipes} from "../template/displayRecipes.js";
+import {filterRecipes} from "../utils/recipeSorter.js";
+import {removeFilter} from "../template/removeTags.js";
 
 export function createTags (filter, type) {
 
@@ -45,18 +48,8 @@ export function createTags (filter, type) {
     selectedFilterClose.setAttribute('aria-hidden', 'true');
 
     selectedFilter.appendChild(selectedFilterClose);
+
     selectedFilterClose.addEventListener('click', () => {
-        selectedFilter.remove();
-        tag.remove();
-        updateIngredientsDisplay();
-        updateAppliancesDisplay();
-        updateUstensilsDisplay();
-        alert(filtersState.selectedIngredients);
-
-        filtersState.selectedIngredients.splice(filtersState.selectedIngredients.indexOf(filter), 1);
-        filtersState.selectedAppliances.splice(filtersState.selectedAppliances.indexOf(filter), 1);
-        filtersState.selectedUstensils.splice(filtersState.selectedUstensils.indexOf(filter), 1);
-        alert(filtersState.selectedIngredients);
-
+        removeFilter(selectedFilter, filter, tag);
     });
 }

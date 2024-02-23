@@ -28,9 +28,6 @@ searchButton.addEventListener('click', () => {
     filtersState.selectedIngredients.length = 0;
     filtersState.selectedAppliances.length = 0;
     filtersState.selectedUstensils.length = 0;
-    // selectedIngredients.length = 0;
-    // selectedAppliances.length = 0;
-    // selectedUstensils.length = 0;
 
     const searchInput = document.querySelector('.search-input').value;
     if (searchInput.length >= 3) {
@@ -166,6 +163,30 @@ ustensilButton.addEventListener('click', () => {
         displayAppliances(filteredResults);
         displayUstensils(filteredResults);
         updateUstensilsDisplay();
+
+
+        const selectedFilterClose = document.querySelector('.selected-filter i');
+        selectedFilterClose.addEventListener('click', () => {
+            selectedFilter.remove();
+            tag.remove();
+            updateIngredientsDisplay();
+            updateAppliancesDisplay();
+            updateUstensilsDisplay();
+
+            // remove the filter from the selected filters
+            const arrayBeforeRemoval = filtersState.selectedIngredients;
+            alert(arrayBeforeRemoval);
+
+
+            filtersState.selectedIngredients.splice(filtersState.selectedIngredients.indexOf(filter), 1);
+            filtersState.selectedAppliances.splice(filtersState.selectedAppliances.indexOf(filter), 1);
+            filtersState.selectedUstensils.splice(filtersState.selectedUstensils.indexOf(filter), 1);
+
+            const arrayAfterRemoval = filtersState.selectedIngredients;
+            alert(arrayAfterRemoval);
+
+
+        });
     }
 });
 
