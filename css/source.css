@@ -216,6 +216,15 @@ main {
 .filters-list {
     @apply flex flex-col;
     gap: 2px;
+    max-height: 130px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+    display: none;
 }
 
 .filters-list li {
@@ -238,6 +247,14 @@ main {
     @apply bg-custom-yellow;
     padding: 5px 16px;
 }
+
+.collapsed .advanced-search-container,
+.collapsed .filters-list,
+.collapsed .tags-container {
+    display: none;
+}
+
+
 
 /*================================ TAGS ================================*/
 

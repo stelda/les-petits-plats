@@ -73,6 +73,17 @@ ustensilSearch.addEventListener('keyup', () => {
     updateUstensilList(ustensilInput);
 });
 
+/*==================================== Click on Chevrons ====================================*/
+
+const chevrons = document.querySelectorAll('.fa-chevron-down, .fa-chevron-up');
+chevrons.forEach(chevron => {
+    chevron.addEventListener('click', function() {
+        const filterContainer = this.closest('.filter');
+        filterContainer.classList.toggle('collapsed');
+        this.classList.toggle('fa-chevron-down');
+        this.classList.toggle('fa-chevron-up');
+    });
+});
 
 /*==================================== Click on Advanced Search Button ====================================*/
 const ingredientButton = document.querySelector('.ingredient-filter .advanced-search-button');
@@ -102,7 +113,7 @@ ingredientButton.addEventListener('click', () => {
         filtersState.selectedIngredients.push(selectedIngredient);
         /* empty the input */
         ingredientSearch.value = '';
-        alert(filtersState.selectedIngredients);
+        // alert(filtersState.selectedIngredients);
     }
     const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
     displayRecipes(filteredResults);
@@ -129,7 +140,7 @@ applianceButton.addEventListener('click', () => {
         }
         filtersState.selectedAppliances.push(selectedAppliance);
         applianceSearch.value = '';
-        alert(filtersState.selectedAppliances);
+        // alert(filtersState.selectedAppliances);
         const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
         displayRecipes(filteredResults);
         displayIngredients(filteredResults);
@@ -156,7 +167,7 @@ ustensilButton.addEventListener('click', () => {
         }
         filtersState.selectedUstensils.push(selectedUstensil);
         ustensilSearch.value = '';
-        alert(filtersState.selectedUstensils);
+        // alert(filtersState.selectedUstensils);
         const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
         displayRecipes(filteredResults);
         displayIngredients(filteredResults);
@@ -173,19 +184,16 @@ ustensilButton.addEventListener('click', () => {
             updateAppliancesDisplay();
             updateUstensilsDisplay();
 
+            // const arrayBeforeRemoval = filtersState.selectedIngredients;
+            // alert("arrayBeforeRemoval" + arrayBeforeRemoval);
+
             // remove the filter from the selected filters
-            const arrayBeforeRemoval = filtersState.selectedIngredients;
-            alert(arrayBeforeRemoval);
-
-
             filtersState.selectedIngredients.splice(filtersState.selectedIngredients.indexOf(filter), 1);
             filtersState.selectedAppliances.splice(filtersState.selectedAppliances.indexOf(filter), 1);
             filtersState.selectedUstensils.splice(filtersState.selectedUstensils.indexOf(filter), 1);
 
-            const arrayAfterRemoval = filtersState.selectedIngredients;
-            alert(arrayAfterRemoval);
-
-
+            // const arrayAfterRemoval = filtersState.selectedIngredients;
+            // alert("arrayAfterRemoval" + arrayAfterRemoval);
         });
     }
 });

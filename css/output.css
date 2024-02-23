@@ -835,6 +835,18 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  max-height: 130px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* Internet Explorer and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* scrollbar width */
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .filters-list li {
@@ -862,6 +874,12 @@ main {
   --tw-bg-opacity: 1;
   background-color: rgb(255 209 91 / var(--tw-bg-opacity));
   padding: 5px 16px;
+}
+
+.collapsed .advanced-search-container,
+.collapsed .filters-list,
+.collapsed .tags-container {
+  display: none;
 }
 
 /*================================ TAGS ================================*/
