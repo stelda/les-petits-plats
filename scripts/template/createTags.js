@@ -1,4 +1,5 @@
 import {updateAppliancesDisplay, updateIngredientsDisplay, updateUstensilsDisplay} from "./updateFilters.js";
+import {filtersState} from "../utils/filtersState.js";
 
 export function createTags (filter, type) {
 
@@ -50,5 +51,12 @@ export function createTags (filter, type) {
         updateIngredientsDisplay();
         updateAppliancesDisplay();
         updateUstensilsDisplay();
+        alert(filtersState.selectedIngredients);
+
+        filtersState.selectedIngredients.splice(filtersState.selectedIngredients.indexOf(filter), 1);
+        filtersState.selectedAppliances.splice(filtersState.selectedAppliances.indexOf(filter), 1);
+        filtersState.selectedUstensils.splice(filtersState.selectedUstensils.indexOf(filter), 1);
+        alert(filtersState.selectedIngredients);
+
     });
 }

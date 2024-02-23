@@ -1,5 +1,4 @@
 import recipes from "../../data/recipes.js";
-import RecipeFactory from "../factory/recipeFactory.js";
 import {searchRecipes} from "../utils/recipeSorter.js";
 import {filterRecipes} from "../utils/recipeSorter.js";
 import {displayIngredients, displayAppliances, displayUstensils} from "../template/displayFilters.js";
@@ -7,24 +6,10 @@ import {updateIngredientList, updateApplianceList, updateUstensilList} from "../
 import {createTags} from "../template/createTags.js";
 import {updateIngredientsDisplay, updateAppliancesDisplay, updateUstensilsDisplay} from "../template/updateFilters.js";
 import {resetFilters} from "../utils/resetFilters.js";
+import {filtersState} from "../utils/filtersState.js";
+import {displayRecipes} from "../template/displayRecipes.js";
 
 /*==================================== Display recipes ====================================*/
-function displayRecipes(recipesToDisplay) {
-    const container = document.querySelector('.recipes-container');
-    container.innerHTML = '';
-
-    const recipeElements = recipesToDisplay.map(data => {
-        const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = data;
-        const recipe = new RecipeFactory(id, image, name, servings, ingredients, time, description, appliance, ustensils);
-        return recipe.createRecipeCard();
-    });
-
-    recipeElements.forEach(element => container.appendChild(element));
-
-    const numberContainer = document.querySelector('.number-container');
-    numberContainer.textContent = `${recipesToDisplay.length} recettes`;
-}
-
 /* display all the recipes when the page is loaded */
 document.addEventListener('DOMContentLoaded', () => {
     displayRecipes(recipes);
@@ -40,10 +25,13 @@ const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', () => {
     resetFilters();
     /* reset the selected filters */
+    filtersState.selectedIngredients.length = 0;
+    filtersState.selectedAppliances.length = 0;
+    filtersState.selectedUstensils.length = 0;
+    // selectedIngredients.length = 0;
+    // selectedAppliances.length = 0;
+    // selectedUstensils.length = 0;
 
-    selectedIngredients.length = 0;
-    selectedAppliances.length = 0;
-    selectedUstensils.length = 0;
     const searchInput = document.querySelector('.search-input').value;
     if (searchInput.length >= 3) {
         results = searchRecipes(searchInput);
@@ -91,13 +79,13 @@ ustensilSearch.addEventListener('keyup', () => {
 
 /*==================================== Click on Advanced Search Button ====================================*/
 const ingredientButton = document.querySelector('.ingredient-filter .advanced-search-button');
-const selectedIngredients = [];
+// const selectedIngredients = [];
 
 const applianceButton = document.querySelector('.appliance-filter .advanced-search-button');
-const selectedAppliances = [];
+// const selectedAppliances = [];
 
 const ustensilButton = document.querySelector('.ustensil-filter .advanced-search-button');
-const selectedUstensils = [];
+// const selectedUstensils = [];
 
 // on click on advanced search button, create a list of selected ingredients
 ingredientButton.addEventListener('click', () => {
@@ -111,15 +99,15 @@ ingredientButton.addEventListener('click', () => {
         createTags(selectedIngredient, 'ingredient');
         updateIngredientsDisplay(selectedIngredient);
         /* make impossible to push the same ingredient twice */
-        if (selectedIngredients.includes(selectedIngredient)) {
+        if (filtersState.selectedIngredients.includes(selectedIngredient)) {
             return;
         }
-        selectedIngredients.push(selectedIngredient);
+        filtersState.selectedIngredients.push(selectedIngredient);
         /* empty the input */
         ingredientSearch.value = '';
-        alert(selectedIngredients);
+        alert(filtersState.selectedIngredients);
     }
-    const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+    const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
     displayRecipes(filteredResults);
     displayIngredients(filteredResults);
     displayAppliances(filteredResults);
@@ -139,13 +127,13 @@ applianceButton.addEventListener('click', () => {
         createTags(selectedAppliance, 'appliance');
         updateAppliancesDisplay(selectedAppliance);
         /* make impossible to push the same appliance twice */
-        if (selectedAppliances.includes(selectedAppliance)) {
+        if (filtersState.selectedAppliances.includes(selectedAppliance)) {
             return;
         }
-        selectedAppliances.push(selectedAppliance);
+        filtersState.selectedAppliances.push(selectedAppliance);
         applianceSearch.value = '';
-        alert(selectedAppliances);
-        const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+        alert(filtersState.selectedAppliances);
+        const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
         displayRecipes(filteredResults);
         displayIngredients(filteredResults);
         displayAppliances(filteredResults);
@@ -166,13 +154,13 @@ ustensilButton.addEventListener('click', () => {
         createTags(selectedUstensil, 'ustensil');
         updateUstensilsDisplay(selectedUstensil);
         /* make impossible to push the same ustensil twice */
-        if (selectedUstensils.includes(selectedUstensil)) {
+        if (filtersState.selectedUstensils.includes(selectedUstensil)) {
             return;
         }
-        selectedUstensils.push(selectedUstensil);
+        filtersState.selectedUstensils.push(selectedUstensil);
         ustensilSearch.value = '';
-        alert(selectedUstensils);
-        const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+        alert(filtersState.selectedUstensils);
+        const filteredResults = filterRecipes(results, filtersState.selectedIngredients, filtersState.selectedAppliances, filtersState.selectedUstensils);
         displayRecipes(filteredResults);
         displayIngredients(filteredResults);
         displayAppliances(filteredResults);
