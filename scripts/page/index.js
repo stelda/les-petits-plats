@@ -8,7 +8,7 @@ import {createTags} from "../template/createTags.js";
 import {updateIngredientsDisplay, updateAppliancesDisplay, updateUstensilsDisplay} from "../template/updateFilters.js";
 import {resetFilters} from "../utils/resetFilters.js";
 
-/*====================================Display recipes ====================================*/
+/*==================================== Display recipes ====================================*/
 function displayRecipes(recipesToDisplay) {
     const container = document.querySelector('.recipes-container');
     container.innerHTML = '';
@@ -33,13 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
     displayUstensils(recipes);
 });
 
+let results = recipes;
+
 /* on click on the search button, display the recipes that match the search input */
 const searchButton = document.querySelector('.search-button');
 searchButton.addEventListener('click', () => {
     resetFilters();
+    /* reset the selected filters */
+
+    selectedIngredients.length = 0;
+    selectedAppliances.length = 0;
+    selectedUstensils.length = 0;
     const searchInput = document.querySelector('.search-input').value;
     if (searchInput.length >= 3) {
-        const results = searchRecipes(searchInput);
+        results = searchRecipes(searchInput);
         displayRecipes(results);
         displayIngredients(results);
         displayAppliances(results);
@@ -50,10 +57,10 @@ searchButton.addEventListener('click', () => {
             container.textContent = `Aucune recette ne correspond à « ${searchInput} » vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
         }
     } else {
-        displayRecipes(recipes);
-        displayIngredients(recipes);
-        displayAppliances(recipes);
-        displayUstensils(recipes);
+        displayRecipes(results);
+        displayIngredients(results);
+        displayAppliances(results);
+        displayUstensils(results);
     }
 });
 
@@ -83,11 +90,18 @@ ustensilSearch.addEventListener('keyup', () => {
 
 
 /*==================================== Click on Advanced Search Button ====================================*/
-// on click on advanced search button, create a list of selected ingredients
-
 const ingredientButton = document.querySelector('.ingredient-filter .advanced-search-button');
+const selectedIngredients = [];
+
+const applianceButton = document.querySelector('.appliance-filter .advanced-search-button');
+const selectedAppliances = [];
+
+const ustensilButton = document.querySelector('.ustensil-filter .advanced-search-button');
+const selectedUstensils = [];
+
+// on click on advanced search button, create a list of selected ingredients
 ingredientButton.addEventListener('click', () => {
-    const selectedIngredient = ingredientSearch.value;
+    const selectedIngredient = ingredientSearch.value.trim();
 
     const ingredientsList = document.querySelectorAll('.ingredient');
     const availableIngredients = Array.from(ingredientsList).map(li => li.textContent.toLowerCase());
@@ -96,14 +110,26 @@ ingredientButton.addEventListener('click', () => {
     if (availableIngredients.includes(selectedIngredient.toLowerCase())) {
         createTags(selectedIngredient, 'ingredient');
         updateIngredientsDisplay(selectedIngredient);
+        /* make impossible to push the same ingredient twice */
+        if (selectedIngredients.includes(selectedIngredient)) {
+            return;
+        }
+        selectedIngredients.push(selectedIngredient);
+        /* empty the input */
+        ingredientSearch.value = '';
+        alert(selectedIngredients);
     }
-
+    const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+    displayRecipes(filteredResults);
+    displayIngredients(filteredResults);
+    displayAppliances(filteredResults);
+    displayUstensils(filteredResults);
+    updateIngredientsDisplay();
 });
 
 // on click on advanced search button, create a list of selected appliance
-const applianceButton = document.querySelector('.appliance-filter .advanced-search-button');
 applianceButton.addEventListener('click', () => {
-    const selectedAppliance = applianceSearch.value;
+    const selectedAppliance = applianceSearch.value.trim();
 
     const appliancesList = document.querySelectorAll('.appliance');
     const availableAppliances = Array.from(appliancesList).map(li => li.textContent.toLowerCase());
@@ -112,13 +138,25 @@ applianceButton.addEventListener('click', () => {
     if (availableAppliances.includes(selectedAppliance.toLowerCase())) {
         createTags(selectedAppliance, 'appliance');
         updateAppliancesDisplay(selectedAppliance);
+        /* make impossible to push the same appliance twice */
+        if (selectedAppliances.includes(selectedAppliance)) {
+            return;
+        }
+        selectedAppliances.push(selectedAppliance);
+        applianceSearch.value = '';
+        alert(selectedAppliances);
+        const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+        displayRecipes(filteredResults);
+        displayIngredients(filteredResults);
+        displayAppliances(filteredResults);
+        displayUstensils(filteredResults);
+        updateAppliancesDisplay();
     }
 });
 
 // on click on advanced search button, create a list of selected ustensils
-const ustensilButton = document.querySelector('.ustensil-filter .advanced-search-button');
 ustensilButton.addEventListener('click', () => {
-    const selectedUstensil = ustensilSearch.value;
+    const selectedUstensil = ustensilSearch.value.trim();
 
     const ustensilsList = document.querySelectorAll('.ustensil');
     const availableUstensils = Array.from(ustensilsList).map(li => li.textContent.toLowerCase());
@@ -127,10 +165,21 @@ ustensilButton.addEventListener('click', () => {
     if (availableUstensils.includes(selectedUstensil.toLowerCase())) {
         createTags(selectedUstensil, 'ustensil');
         updateUstensilsDisplay(selectedUstensil);
+        /* make impossible to push the same ustensil twice */
+        if (selectedUstensils.includes(selectedUstensil)) {
+            return;
+        }
+        selectedUstensils.push(selectedUstensil);
+        ustensilSearch.value = '';
+        alert(selectedUstensils);
+        const filteredResults = filterRecipes(results, selectedIngredients, selectedAppliances, selectedUstensils);
+        displayRecipes(filteredResults);
+        displayIngredients(filteredResults);
+        displayAppliances(filteredResults);
+        displayUstensils(filteredResults);
+        updateUstensilsDisplay();
     }
 });
-
-
 
 
 
