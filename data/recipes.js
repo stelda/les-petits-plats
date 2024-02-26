@@ -392,7 +392,7 @@ const recipes = [
                 "unit": "tranches"
             }, 
             {
-                "ingredient": "Pommes",
+                "ingredient": "Pomme",
                 "quantity": 1
             },
             {
@@ -421,7 +421,7 @@ const recipes = [
                 "unit": "grammes"
             },
             {
-                "ingredient": "Pommes",
+                "ingredient": "Pomme",
                 "quantity": 8
             },
             {
@@ -727,7 +727,7 @@ const recipes = [
     },
     {
         "id": 21,
-        "image": "Recette21.jpg",
+        "image": "Recette39.jpg",
         "name": "Spaghettis à la bolognaise",
         "servings": 4,
         "ingredients": [
@@ -1195,7 +1195,7 @@ const recipes = [
     },
     {
         "id": 34,
-        "image": "Recette34.jpg",
+        "image": "Recette49.jpg",
         "name": "Purée de patate douce",
         "servings": 4,
         "ingredients": [
@@ -1376,7 +1376,7 @@ const recipes = [
     },
     {
         "id": 39,
-        "image": "Recette39.jpg",
+        "image": "Recette21.jpg",
         "name": "Crumble aux pommes",
         "servings": 40,
         "ingredients": [
@@ -1705,16 +1705,16 @@ const recipes = [
     },
     {
         "id": 49,
-        "image": "Recette49.jpg",
+        "image": "Recette34.jpg",
         "name": "Smoothie tropical",
         "servings": 4,
         "ingredients": [
             {
-                "ingredient": "Bananes",
+                "ingredient": "Banane",
                 "quantity": 2
             },
             {
-                "ingredient": "Kiwis",
+                "ingredient": "Kiwi",
                 "quantity": 3
             },
             {
