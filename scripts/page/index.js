@@ -8,6 +8,7 @@ import {updateIngredientsDisplay, updateAppliancesDisplay, updateUstensilsDispla
 import {resetFilters} from "../utils/resetFilters.js";
 import {filtersState} from "../utils/filtersState.js";
 import {displayRecipes} from "../template/displayRecipes.js";
+import {escapeHTML} from "../utils/escapeHtml.js";
 
 /*==================================== Display recipes ====================================*/
 /* display all the recipes when the page is loaded */
@@ -29,7 +30,7 @@ searchButton.addEventListener('click', () => {
     filtersState.selectedAppliances.length = 0;
     filtersState.selectedUstensils.length = 0;
 
-    const searchInput = document.querySelector('.search-input').value;
+    const searchInput = escapeHTML(document.querySelector('.search-input').value);
     if (searchInput.length >= 3) {
         results = searchRecipes(searchInput);
         displayRecipes(results);
