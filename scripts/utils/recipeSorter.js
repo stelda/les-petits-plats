@@ -1,41 +1,69 @@
 import recipes from "../../data/recipes.js";
 
 export function searchRecipes(input) {
-    return recipes.filter((recipe) => {
-        const searchTerm = input.toLowerCase();
+    const filteredRecipes = [];
+    const searchTerm = input.toLowerCase();
 
-        // Check if the search term is in the recipe title, description, or ingredients
+    for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];
         const inTitle = recipe.name.toLowerCase().includes(searchTerm);
         const inDescription = recipe.description.toLowerCase().includes(searchTerm);
-        const inIngredients = recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchTerm));
 
-        return inTitle || inDescription || inIngredients;
-    });
+        let inIngredients = false;
+        for (let j = 0; j < recipe.ingredients.length; j++) {
+            if (recipe.ingredients[j].ingredient.toLowerCase().includes(searchTerm)) {
+                inIngredients = true;
+                break;
+            }
+        }
+
+        if (inTitle || inDescription || inIngredients) {
+            filteredRecipes.push(recipe);
+        }
+    }
+
+    return filteredRecipes;
 }
 
 export function filterRecipes(recipesToFilter, selectedIngredients = [], selectedAppliances = [], selectedUstensils = []) {
-    return recipesToFilter.filter(recipe => {
-        // sort by ingredients
-        const matchesIngredients = selectedIngredients.length === 0 || selectedIngredients.every(selectedIngredient =>
-            recipe.ingredients.some(ingredient =>
-                ingredient.ingredient.toLowerCase().includes(selectedIngredient.toLowerCase())
-            )
-        );
+    const filteredRecipes = [];
 
-        // sort by appliances
-        const matchesAppliances = selectedAppliances.length === 0 || selectedAppliances.every(selectedAppliance =>
-            recipe.appliance.toLowerCase().includes(selectedAppliance.toLowerCase())
-        );
+    recipeLoop: for (let i = 0; i < recipesToFilter.length; i++) {
+        const recipe = recipesToFilter[i];
 
-        // sort by ustensils
-        const matchesUstensils = selectedUstensils.length === 0 || selectedUstensils.every(selectedUstensil =>
-            recipe.ustensils.some(ustensil =>
-                ustensil.toLowerCase().includes(selectedUstensil.toLowerCase())
-            )
-        );
+        // Check ingredients
+        for (let j = 0; j < selectedIngredients.length; j++) {
+            let ingredientFound = false;
+            for (let k = 0; k < recipe.ingredients.length; k++) {
+                if (recipe.ingredients[k].ingredient.toLowerCase().includes(selectedIngredients[j].toLowerCase())) {
+                    ingredientFound = true;
+                    break;
+                }
+            }
+            if (!ingredientFound) continue recipeLoop;
+        }
 
-        return matchesIngredients && matchesAppliances && matchesUstensils;
-    });
+        // Check appliances
+        if (selectedAppliances.length > 0 && !selectedAppliances.includes(recipe.appliance.toLowerCase())) {
+            continue;
+        }
+
+        // Check ustensils
+        for (let j = 0; j < selectedUstensils.length; j++) {
+            let ustensilFound = false;
+            for (let k = 0; k < recipe.ustensils.length; k++) {
+                if (recipe.ustensils[k].toLowerCase().includes(selectedUstensils[j].toLowerCase())) {
+                    ustensilFound = true;
+                    break;
+                }
+            }
+            if (!ustensilFound) continue recipeLoop;
+        }
+
+        filteredRecipes.push(recipe);
+    }
+
+    return filteredRecipes;
 }
 
 
