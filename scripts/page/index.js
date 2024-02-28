@@ -99,12 +99,20 @@ const ustensilButton = document.querySelector('.ustensil-filter .advanced-search
 // on click on advanced search button, create a list of selected ingredients
 ingredientButton.addEventListener('click', () => {
     const selectedIngredient = ingredientSearch.value.trim();
-
     const ingredientsList = document.querySelectorAll('.ingredient');
     const availableIngredients = Array.from(ingredientsList).map(li => li.textContent.toLowerCase());
 
-    // check if the selected ingredient is available
-    if (availableIngredients.includes(selectedIngredient.toLowerCase())) {
+    // replace includes with for loop to check if the selected ingredient is available
+    let isIngredientAvailable = false;
+    for (let i = 0; i < availableIngredients.length; i++) {
+        if (availableIngredients[i] === selectedIngredient.toLowerCase()) {
+            isIngredientAvailable = true;
+            break;
+        }
+    }
+
+    // if (availableIngredients.includes(selectedIngredient.toLowerCase())) {
+    if (isIngredientAvailable) {
         createTags(selectedIngredient, 'ingredient');
         updateIngredientsDisplay(selectedIngredient);
         /* make impossible to push the same ingredient twice */
@@ -127,12 +135,20 @@ ingredientButton.addEventListener('click', () => {
 // on click on advanced search button, create a list of selected appliance
 applianceButton.addEventListener('click', () => {
     const selectedAppliance = applianceSearch.value.trim();
-
     const appliancesList = document.querySelectorAll('.appliance');
     const availableAppliances = Array.from(appliancesList).map(li => li.textContent.toLowerCase());
 
-    // check if the selected appliance is available
-    if (availableAppliances.includes(selectedAppliance.toLowerCase())) {
+    // replace includes with for loop to check if the selected appliance is available
+    let isApplianceAvailable = false;
+    for (let i = 0; i < availableAppliances.length; i++) {
+        if (availableAppliances[i] === selectedAppliance.toLowerCase()) {
+            isApplianceAvailable = true;
+            break;
+        }
+    }
+
+    // if (availableAppliances.includes(selectedAppliance.toLowerCase())) {
+    if (isApplianceAvailable) {
         createTags(selectedAppliance, 'appliance');
         updateAppliancesDisplay(selectedAppliance);
         /* make impossible to push the same appliance twice */
@@ -154,12 +170,20 @@ applianceButton.addEventListener('click', () => {
 // on click on advanced search button, create a list of selected ustensils
 ustensilButton.addEventListener('click', () => {
     const selectedUstensil = ustensilSearch.value.trim();
-
     const ustensilsList = document.querySelectorAll('.ustensil');
     const availableUstensils = Array.from(ustensilsList).map(li => li.textContent.toLowerCase());
 
-    // check if the selected ustensil is available
-    if (availableUstensils.includes(selectedUstensil.toLowerCase())) {
+    // replace includes with for loop to check if the selected ustensil is available
+    let isUstensilAvailable = false;
+    for (let i = 0; i < availableUstensils.length; i++) {
+        if (availableUstensils[i] === selectedUstensil.toLowerCase()) {
+            isUstensilAvailable = true;
+            break;
+        }
+    }
+
+// if (availableUstensils.includes(selectedUstensil.toLowerCase())) {
+    if (isUstensilAvailable) {
         createTags(selectedUstensil, 'ustensil');
         updateUstensilsDisplay(selectedUstensil);
         /* make impossible to push the same ustensil twice */
@@ -175,7 +199,6 @@ ustensilButton.addEventListener('click', () => {
         displayAppliances(filteredResults);
         displayUstensils(filteredResults);
         updateUstensilsDisplay();
-
 
         const selectedFilterClose = document.querySelector('.selected-filter i');
         selectedFilterClose.addEventListener('click', () => {

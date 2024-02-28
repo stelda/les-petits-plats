@@ -44,8 +44,10 @@ export function filterRecipes(recipesToFilter, selectedIngredients = [], selecte
         }
 
         // Check appliances
-        if (selectedAppliances.length > 0 && !selectedAppliances.includes(recipe.appliance.toLowerCase())) {
-            continue;
+        for (let j = 0; j < selectedAppliances.length; j++) {
+            if (!recipe.appliance.toLowerCase().includes(selectedAppliances[j].toLowerCase())) {
+                continue recipeLoop;
+            }
         }
 
         // Check ustensils
