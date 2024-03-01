@@ -1,7 +1,7 @@
 ## Description
 
 This project, initiated as part of a software developer training program, aims to develop a high-performance search functionality for a new cooking recipe website.
-The implementation of the search feature in JavaScript will involve comparing two algorithmic approaches to ensure efficiency and effectiveness and to provide a seamless user experience.
+The implementation of the search feature in JavaScript involve comparing two algorithmic approaches to ensure efficiency and effectiveness and to provide a seamless user experience.
 
 ## Licenses
 
